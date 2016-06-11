@@ -1,7 +1,7 @@
 # Event-Management
  In 2016, a group of IT experts in Software Development Industry (Mandalay) worked together for a platform named "Event Manager". We, Total ICT Solution Expo committee, would like to make sure to track the attendance to our events more precisely and effectively by using technology we love.  So that, we decided to start develop a system with the Open Source concept which includes both Web &amp; Mobile platform for information management by using MEAN Stack development tools (MongoDB, Express, AngularJS and Node.js). We brainstormed about the project requirements and specifications by sitting together very often. And now, our dreams come true with a product with each of us efforts. 
  
- ## Technical Overview
+## Technical Overview
 	The project will use the following technologies to develop as web application.
 	1. Node.js for server side API
 	2. MongoDB for database
