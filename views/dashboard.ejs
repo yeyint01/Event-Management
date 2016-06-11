@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin Panel :: Events Manager</title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="../vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../css/custom.css" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+
+<div class="container body" >
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="dashboard" class="site_title"><img src="../images/menubar_logo.png"></img> <span>Myanmar Events</span></a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu prile quick info -->
+                <div class="profile">
+                    <div class="profile_pic">
+                        <img src="file_uploads/profile_photos/<%=user.local.user_avator%>" alt="..." class="img-circle profile_img">
+                    </div>
+                    <div class="profile_info">
+                        <span>Welcome,</span>
+                        <h2><%=user.local.user_full_name %></h2>
+                    </div>
+                </div>
+                <!-- /menu prile quick info -->
+
+                <br />
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <h3>Admin Panel</h3>
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="dashboard">Dashboard</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-edit"></i> Set Up <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="events">Events</a>
+                                    </li>
+                                    <li><a href="speakers">Speakers</a>
+                                    </li>
+                                    <li><a href="Event Organizers">Event Organizers</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-group"></i> Manage Users <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="userlist">Users</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu_section">
+                        <h3>Reports & Statistics</h3>
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-bar-chart-o"></i> Statistics & Reports <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="event-attendance">Event Attendance</a>
+                                    </li>
+                                    <li><a href="event-registration">Event Registration</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                <div class="sidebar-footer hidden-small">
+                    <a href="/logout" data-toggle="tooltip" data-placement="top" title="Logout">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+
+            <div class="nav_menu">
+                <nav class="" role="navigation">
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img src="file_uploads/profile_photos/<%=user.local.user_avator %>" alt=""><%=user.local.user_full_name %>
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                <li><a href="javascript:;">  Profile</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <span class="badge bg-red pull-right">50%</span>
+                                        <span>Settings</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Help</a>
+                                </li>
+                                <li><a href="login"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li role="presentation" class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="badge bg-green">6</span>
+                            </a>
+                            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                <li>
+                                    <a>
+                                        <span class="image">
+                                            <img src="images/<%=user.local.user_avator %>" alt="Profile Image" />
+                                        </span>
+                                        <span>
+                                            <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                        </span>
+                                        <span class="message">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image">
+                                            <img src="images/<%=user.local.user_avator %>" alt="Profile Image" />
+                                        </span>
+                                        <span>
+                                            <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                        </span>
+                                        <span class="message">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image">
+                                            <img src="images/<%=user.local.user_avator %>" alt="Profile Image" />
+                                        </span>
+                                        <span>
+                                            <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                        </span>
+                                        <span class="message">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image">
+                                            <img src="images/<%=user.local.user_avator %>" alt="Profile Image" />
+                                        </span>
+                                        <span>
+                                            <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                        </span>
+                                        <span class="message">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image">
+                                            <img src="images/<%=user.local.user_avator %>" alt="Profile Image" />
+                                        </span>
+                                        <span>
+                                            <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                        </span>
+                                        <span class="message">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image">
+                                            <img src="images/<%=user.local.user_avator %>" alt="Profile Image" />
+                                        </span>
+                                        <span>
+                                            <span>John Smith</span>
+                                            <span class="time">3 mins ago</span>
+                                        </span>
+                                        <span class="message">
+                                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+
+
+                <!--<div class="page-title">
+                    <div class="title_left">
+                        <h3>Hi <%=user.local.user_full_name %>! Welcome to Event Manager!</h3>
+                    </div>
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">Go!</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>-->
+
+
+                <div class="x_panel">
+                    <div class="x_content">
+                        <br />
+
+                        <h1>About Event Managment System</h1>
+                        <p class="font-gray-dark">
+                            In 2016, a group of IT experts in Software Development Industry (Mandalay) worked together for a platform named "Event Manager". We, Total ICT Solution Expo committee, would like to make sure to track the attendance to our events more precisely and effectively by using technology we love.
+                        </p>
+                        <p>
+                            So that, we decided to start develop a system with the Open Source concept which includes both Web & Mobile platform for information management by using MEAN Stack development tools (MongoDB, Express, AngularJS and Node.js). We brainstormed about the project requirements and specifications by sitting together very often. And now, our dreams come true with a product with each of us efforts.
+                        </p>
+                        <p>
+                            Cheers Guys!
+                        </p>
+                    </div>
+                    <div class="x_content">
+                        <h4>People who contributes in project</h4>
+
+                        <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
+                            &nbsp;
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
+                            <div class="well profile_view">
+                                <div class="col-sm-12">
+                                    <h4 class="brief"><i>Project Manager</i></h4>
+                                    <div class="left col-xs-7">
+                                        <h2>U Ye Yint Aung</h2>
+                                        <h6>MARTER Innovative Solution</h6>
+                                        <p><strong>Designation: </strong> CEO </p>
+                                        <ul class="list-unstyled">
+                                            <li><i class="fa fa-envelope-o"></i> yeyint01@gmail.com </li>
+                                            <li><i class="fa fa-phone"></i> 09-793040405 </li>
+                                        </ul>
+                                    </div>
+                                    <div class="right col-xs-5 text-center">
+                                        <img src="images/YeYint.png" alt="" class="img-circle img-responsive">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
+                            <div class="well profile_view">
+                                <div class="col-sm-12">
+                                    <h4 class="brief"><i>Project Manager</i></h4>
+                                    <div class="left col-xs-7">
+                                        <h2>U Thiha Zaw</h2>
+                                        <h6>Trion Co,Ltd</h6>
+                                        <p><strong>Designation: </strong> Managing Director </p>
+                                        <ul class="list-unstyled">
+                                            <li><i class="fa fa-envelope-o"></i> tzaw@gmail.com </li>
+                                            <li><i class="fa fa-phone"></i> 09-2038742 </li>
+                                        </ul>
+                                    </div>
+                                    <div class="right col-xs-5 text-center">
+                                        <img src="images/ThihaZaw.jpg" alt="" class="img-circle img-responsive">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                Copy Right 2016 by Myanmar Event Management
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<!-- bootstrap-daterangepicker -->
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<!-- iCheck -->
+<script src="../vendors/iCheck/icheck.min.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="js/moment/moment.min.js"></script>
+<script src="js/datepicker/daterangepicker.js"></script>
+<!-- bootstrap-wysiwyg -->
+<script src="../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+<script src="../vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+<script src="../vendors/google-code-prettify/src/prettify.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="js/custom.js"></script>
+
+
+
+<!-- Autosize -->
+<script>
+    $(document).ready(function() {
+        autosize($('.resizable_textarea'));
+    });
+</script>
+<!-- /Autosize -->
+
+
+</body>
+</html>

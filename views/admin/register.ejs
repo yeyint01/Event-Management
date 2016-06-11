@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel='stylesheet' href='../../stylesheets/style.css' />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin Login :: Myanmar Events Manager</title>
+
+    <!-- Bootstrap -->
+    <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../../css/custom.css" rel="stylesheet">
+
+    <script type="text/javascript">
+        function CheckUser()
+        {
+            alert("test");
+            var obj = JSON.parse(service.useService("http://localhost:3000/web_services/event_users"));
+            alert(obj[0]);
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div  class=" form" style="color:#ffffff;">
+            <section class="login_content">
+                <form method="post" action="/register">
+                    <h1>Create Account</h1>
+                    <div>
+                        <input type="email" class="form-control" placeholder="Email" name="user_email" required="" />
+                    </div>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Full Name" name="user_full_name" required="" />
+                    </div>
+                    <div>
+                        <input type="password" class="form-control" placeholder="Password" name="user_password"  required="" />
+                    </div>
+                    <div>
+                        <input type="password" class="form-control" placeholder="Confirm Password" name="user_confirm_password"  required="" />
+                    </div>
+                    <div>
+                        <input type="submit" value="Submit" class="btn btn-default submit" />
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="separator">
+                        <div class="clearfix"></div>
+                        <br />
+                        <div>
+                            <p>©2016 All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+
+</body>
+</html>
